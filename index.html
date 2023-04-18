@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Earth and Moon</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+      
+      .earth {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #3477af;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 50px #3477af;
+      }
+      
+      .moon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #eee;
+        position: absolute;
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 20px #eee;
+      }
+      
+      .stars {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+      
+      .star {
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: twinkling 5s infinite;
+      }
+      
+      @keyframes twinkling {
+        0% { opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { opacity: 0.6; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="earth"></div>
+    <div class="moon"></div>
+    <div class="stars">
+      <!-- Generate 100 random stars -->
+      <?php for ($i = 0; $i < 100; $i++) { ?>
+        <div class="star" style="top: <?= rand(0, 100) ?>%; left: <?= rand(0, 100) ?>%;"></div>
+      <?php } ?>
+    </div>
+    <script>
+      // Generate 100 random stars
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        document.querySelector('.stars').appendChild(star);
+      }
+    </script>
+  </body>
+</html>
